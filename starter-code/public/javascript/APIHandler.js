@@ -1,25 +1,70 @@
 class APIHandler {
-  constructor (baseUrl) {
-    this.BASE_URL = baseUrl;
+  constructor(baseUrl) {
+    this.BASE_URL = baseUrl + '/characters';
   }
 
-  getFullList () {
-
+  getFullList() {
+    axios
+      .get(this.BASE_URL)
+      .then(res => {
+        showData(res.data);
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
-  getOneRegister () {
-
+  getOneRegister(id) {
+    axios
+      .get(`${this.BASE_URL}/${id}`)
+      .then(res => {
+        console.log('One register: ', res.data);
+      })
+      .catch(err => {
+        console.error('The error is: ', err);
+      });
   }
 
-  createOneRegister () {
-
+  createOneRegister(name, occupation, weapon, cartoon) {
+    axios
+      .post(this.BASE_URL, {
+        name: name,
+        occupation: occupation,
+        weapon: weapon,
+        cartoon: cartoon
+      })
+      .then(req, res => {
+        res.send('data sent');
+      })
+      .catch(err => {
+        console.error('The error is: ', err);
+      });
   }
 
-  updateOneRegister () {
-
+  updateOneRegister(id, name, occupation, weapon, cartoon) {
+    axios
+      .patch(`${this.BASE_URL}/${id}`, {
+        name: name,
+        occupation: occupation,
+        weapon: weapon,
+        cartoon: cartoon
+      })
+      .then(res => {
+        showData(res.data);
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
-  deleteOneRegister () {
-
+  deleteOneRegister(id) {
+    axios
+      .delete(`${this.BASE_URL}/${id}`)
+      .then(res => {
+        showData(res.data);
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 }

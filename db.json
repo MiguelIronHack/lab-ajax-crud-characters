@@ -1,0 +1,17 @@
+{
+  "characters": [
+    {
+      "name": "john",
+      "occupation": "lala",
+      "weapon": "hammer",
+      "id": 1
+    },
+    {
+      "name": "1",
+      "occupation": "asd",
+      "weapon": "vacuum",
+      "cartoon": "on",
+      "id": 2
+    }
+  ]
+}
